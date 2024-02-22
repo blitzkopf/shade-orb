@@ -1,0 +1,18 @@
+{
+  "domain": "shade_orb",
+  "name": "Shade ORB",
+  "version": "0.0.1",
+  "bluetooth": [
+    {
+      "local_name": "Shade ORB"
+    }
+  ],
+  "codeowners": ["@blitzkopf"],
+  "config_flow": true,
+  "dependencies": ["bluetooth_adapters"],
+  "loggers": ["shadeorb"],
+  "documentation": "https://github.com/blitzkopf/shade_orb",
+  "issue_tracker": "https://github.com/blitzkopf/shade-orb/issues",
+  "iot_class": "assumed_state",
+  "requirements": ["shadeorb==0.0.1"]
+}
