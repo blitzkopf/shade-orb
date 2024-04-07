@@ -1,0 +1,21 @@
+{
+    "title": "Shade ORB light",
+    "config": {
+      "step": {
+        "user": {
+          "title": "Connect ORB",
+          "description": "Please connect to the ORB light",
+          "data": {
+            "cmd_prefix": "Command prefix 4 bytes hex, find by bluetooth snooping the android app"
+          }
+        }
+      },
+      "error": {
+        "cannot_connect": "Can not connect to the ORB",
+        "unknown": "Unexpected error occurred."
+      },
+      "abort": {
+        "no_devices_found": "No Shade ORB lights found"
+      }
+    }
+  }

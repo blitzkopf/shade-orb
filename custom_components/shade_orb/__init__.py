@@ -32,7 +32,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             f"Could not find Shade ORB device with address {address}"
         )
 
-    orb = ORB(ble_device)
+    orb = ORB(ble_device,entry.data["cmd_prefix"])
 
     @callback
     def _async_update_ble(

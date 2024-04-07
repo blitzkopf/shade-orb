@@ -10,7 +10,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 @dataclass
 class ORBData:
-    """Data for the led ble integration."""
+    """Data for the shade orb integration."""
 
     title: str
     device: ORB

@@ -53,6 +53,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if user_input is not None:
             address = user_input[CONF_ADDRESS]
+            cmd_prefix = user_input["cmd_prefix"]
             discovery_info = self._discovered_devices[address]
             local_name = discovery_info.name
             await self.async_set_unique_id(
@@ -60,7 +61,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             )
             self._abort_if_unique_id_configured()
             _LOGGER.info("Connecting to %s %s", address,discovery_info.device)
-            orb = ORB(discovery_info.device)
+            orb = ORB(discovery_info.device,cmd_prefix)
             try:
                 await orb.update()
             except BLEAK_EXCEPTIONS:
@@ -74,6 +75,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     title=local_name,
                     data={
                         CONF_ADDRESS: discovery_info.address,
+                        "cmd_prefix": cmd_prefix,
                     },
                 )
 
@@ -107,6 +109,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         for service_info in self._discovered_devices.values()
                     }
                 ),
+                vol.Required("cmd_prefix"): str,
             }
         )
         return self.async_show_form(

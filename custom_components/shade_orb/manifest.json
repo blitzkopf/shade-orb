@@ -5,6 +5,9 @@
   "bluetooth": [
     {
       "local_name": "Shade ORB"
+    },
+    { 
+      "service_uuid": "00001522-3d1c-019e-ac4a-65fd86e87333"
     }
   ],
   "codeowners": ["@blitzkopf"],
@@ -14,5 +17,5 @@
   "documentation": "https://github.com/blitzkopf/shade_orb",
   "issue_tracker": "https://github.com/blitzkopf/shade-orb/issues",
   "iot_class": "assumed_state",
-  "requirements": ["shadeorb==0.0.1"]
+  "requirements": ["shadeorb"]
 }
