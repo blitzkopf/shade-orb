@@ -1,0 +1,57 @@
+{
+    "name": "HA Shade-ORB Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.13",
+    "postCreateCommand": "scripts/setup",
+    "runArgs": [
+        "-e",
+        "GIT_EDITOR=code --wait"
+    ],
+    "mounts": [
+        // Bluetooth
+        "source=/var/run/dbus,target=/var/run/dbus,type=bind",
+        // mount python package shadeorb if you need to do parallel development on it
+        "source=${localWorkspaceFolder}/../shadeorb,target=${containerWorkspaceFolder}/../shadeorb,type=bind"
+    ],
+    "forwardPorts": [
+        8123
+    ],
+    "portsAttributes": {
+        "8123": {
+            "label": "Home Assistant",
+            "onAutoForward": "notify"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "visualstudioexptteam.vscodeintellicode",
+                "redhat.vscode-yaml",
+                "esbenp.prettier-vscode",
+                "GitHub.copilot",
+                "ms-python.python",
+                "github.vscode-pull-request-github",
+                "ryanluker.vscode-coverage-gutters",
+                "ms-python.vscode-pylance"
+            ],
+            "settings": {
+                "files.eol": "\n",
+                "editor.tabSize": 4,
+                "python.pythonPath": "/usr/bin/python3",
+                "python.analysis.autoSearchPaths": false,
+                "python.linting.pylintEnabled": true,
+                "python.linting.enabled": true,
+                "python.formatting.provider": "black",
+                "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+                "editor.formatOnPaste": false,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "files.trimTrailingWhitespace": true
+            }
+        }
+    },
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/rust:1": {}
+    }
+}
